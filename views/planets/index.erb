@@ -1,0 +1,7 @@
+<h1>My planets </h1>
+<% @planets.each do |planet| %>
+  <div>
+    <h3><a href="/<%= planet.id %>"><%= planet.title %></a></h3>
+    <p><%= planet.body %></p>
+  </div>
+<% end %>
