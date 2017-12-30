@@ -1,7 +1,11 @@
-<h1>My planets </h1>
-<% @planets.each do |planet| %>
-  <div>
-    <h3><a href="/<%= planet.id %>"><%= planet.title %></a></h3>
-    <p><%= planet.body %></p>
-  </div>
+<h1> hhh</h1>
+
+<h1>Blog</h1>
+<% @planets.each do |post| %>
+<div>
+  <h3><a href="/<%= post.id %>"><%= post.title %></a></h3>
+  <p><%= post.body %></p>
+  <img src="<%= post.image %>" alt="No">
+  <img src="<%= post.image2 %>" alt="">
+</div>
 <% end %>
