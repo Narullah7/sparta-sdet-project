@@ -1,11 +1,9 @@
-<h1> hhh</h1>
-
-<h1>Blog</h1>
+<h1>Planets</h1>
 <% @planets.each do |post| %>
-<div>
+<div style="float: left; padding-right: 6px;">
   <h3><a href="/<%= post.id %>"><%= post.title %></a></h3>
-  <p><%= post.body %></p>
+  <!-- <p><%= post.body %></p> -->
   <img src="<%= post.image %>" alt="No">
-  <img src="<%= post.image2 %>" alt="">
+  <!-- <img src="<%= post.image2 %>" alt=""> -->
 </div>
 <% end %>

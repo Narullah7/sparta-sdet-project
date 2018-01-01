@@ -1,6 +1,6 @@
 class Planet
   # Creates instance variables and also makes them visible and editable outside the object.
-  attr_accessor :id, :title, :body, :image, :image2
+  attr_accessor :id, :title, :body, :body2, :body3, :image, :image2
 
   # Save is an instance method that we can use to create or update a post
   def save
@@ -10,10 +10,10 @@ class Planet
 
     # If the Post instance has an it means it already exists so we are going to update an existing record
     if(self.id)
-      sql = "UPDATE planet SET title='#{self.title}', body='#{self.body}', image='#{self.image}', image2='#{self.image2}' WHERE id = #{self.id}"
+      sql = "UPDATE planet SET title='#{self.title}', body='#{self.body}', body2='#{self.body2}', body3='#{self.body3}', image='#{self.image}', image2='#{self.image2}' WHERE id = #{self.id}"
     # If there Post has no id this means the post is new and needs creating
     else
-      sql = "INSERT INTO planet (title, body, image, image2) VALUES ('#{self.title}', '#{self.body}', '#{self.image}','#{self.image2}')"
+      sql = "INSERT INTO planet (title, body, body2, body3, image, image2) VALUES ('#{self.title}', '#{self.body}', '#{self.body2}', '#{self.body3}', '#{self.image}','#{self.image2}')"
     end
 
     # Execute the sql in Postgres
@@ -33,7 +33,7 @@ class Planet
     conn = self.open_connection
 
     # SQL statement to select our posts and order them
-    sql = "SELECT id,title,body,image,image2 FROM planet ORDER BY id ASC"
+    sql = "SELECT id,title,body,body2,body3,image,image2 FROM planet ORDER BY id ASC"
 
     # Execute the sql in Postgres
     results = conn.exec(sql)
@@ -89,6 +89,8 @@ class Planet
     planet.id = planet_data['id']
     planet.title = planet_data['title']
     planet.body = planet_data['body']
+    planet.body2 = planet_data['body2']
+    planet.body3 = planet_data['body3']
     planet.image = planet_data['image']
     planet.image2 = planet_data['image2']
 

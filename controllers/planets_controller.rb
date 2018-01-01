@@ -12,9 +12,19 @@ class PlanetsController < Sinatra::Base
   end
 
   get '/' do
+    erb :'planets/NasaApi'
+  end
+
+  get '/planets' do
     # @InstanceVariable = "working"
     @planets = Planet.all
     erb :'planets/index'
+  end
+
+  get '/planets/new' do
+    @planets = Planet.new
+
+    erb :'planets/new'
   end
 
   get '/:id' do
@@ -39,17 +49,21 @@ class PlanetsController < Sinatra::Base
     # Becuase we set the title and body in the models attr_accessor we can edit them from outside the object. Here we are setting the values of the title and body to be the information the user put in the form
     post.title = params[:title]
     post.body = params[:body]
+    post.body2 = params[:body2]
+    post.body3 = params[:body3]
+    post.image = params[:image]
+    post.image2 = params[:image2]
 
     # Save is a instance method that we can use to save the new Post into the db
     post.save
 
     # After the save we request the / route and display all the posts
-    redirect "/"
+    redirect "/planets"
   end
 
 
   # A put request to the /:id will will update an existing post
-  put '/:id'  do
+  put '/planets/:id'  do
 
     # The id of the post we want to update, we pulled this information from request params
     id = params[:id].to_i
@@ -61,12 +75,68 @@ class PlanetsController < Sinatra::Base
     post.id = params[:id]
     post.title = params[:title]
     post.body = params[:body]
+    post.body2 = params[:body2]
+    post.body3 = params[:body3]
+    post.image = params[:image]
+    post.image2 = params[:image2]
 
     # Use the instance method save to update the post
     post.save
 
     # Redirect to / to show all the posts
     redirect '/'
+
+  end
+
+  put '/:id' do
+
+    # The id of the post we want to update, we pulled this information from request params
+    id = params[:id].to_i
+
+    # We use the find Class method to get us the post we need to update
+    post = Planet.find(id)
+
+    # Manipulate the the intance variables to the new data the user entered
+    post.id = params[:id]
+    post.title = params[:title]
+    post.body = params[:body]
+    post.body2 = params[:body2]
+    post.body3 = params[:body3]
+    post.image = params[:image]
+    post.image2 = params[:image2]
+
+    # Use the instance method save to update the post
+    post.save
+
+    # Redirect to / to show all the posts
+    redirect '/planets'
+
+  end
+
+  delete '/:id' do
+
+    # The id of the post we want to delete, we pulled this information from request params
+    id = params[:id].to_i
+
+    # We can use the Class method destroy to remove the post from the db
+    Planet.destroy(id)
+
+    # Redirect to / to show all the posts
+    redirect "/planets"
+
+  end
+
+  get '/:id/edit' do
+
+
+    # The id of the post we want to update, we pulled this information from request params
+    id = params[:id].to_i
+
+    # Use the find Class method in post to retrieve the post we need and assign it to an instance variable post
+    @planets = Planet.find(id)
+
+    # Render the edit template
+    erb :'planets/edit'
 
   end
 

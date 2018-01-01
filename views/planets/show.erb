@@ -1,6 +1,13 @@
 <h1><%= @post.title %></h1>
-<p><%= @post.body %></p>
-<a href="/<%= @post.id %>/edit">edit</a>
+<img src="<%= @post.image %>" alt="">
+<img src="<%= @post.image2 %>" alt=""><br />
+
+<h2>Fun Facts</h2>
+<%= @post.body %><br />
+<%= @post.body2 %><br />
+<%= @post.body3 %><br />
+
+<button><a href="/<%= @post.id %>/edit">Edit</a></button>
 <form action="<%= @post.id %>" method="POST">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" name="name" value="Delete">
