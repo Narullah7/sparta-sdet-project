@@ -1,7 +1,8 @@
-<h1>Live asteroid data: 2018-01-08</h1>
+<h1>Live asteroid data:  <%= @nasa_api['near_earth_objects'].keys[0] %> </h1>
+
 <!-- <div style="padding-left:100px; float:left;"> -->
 
-<% @nasa_api['near_earth_objects']['2018-01-01'].each do |nasa|  %>
+<% @nasa_api['near_earth_objects']['2018-01-03'].each do |nasa|  %>
   <h3><a href="<%= nasa['nasa_jpl_url'] %>"><%= nasa['name'] %></a></h3>
   <p>Neo reference id: <%= nasa['neo_reference_id'] %></p>
   <p>Absolute magnitude: <%= nasa['absolute_magnitude_h'] %></p>

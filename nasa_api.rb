@@ -19,4 +19,4 @@ end
 
 x = NasaApi.new
 # puts x.get_api_feed("2018-01-01")
-puts x.get_api_feed("2018-01-01")['links']['next']
+puts x.get_api_feed("2018-01-01")['near_earth_objects'].keys[0]
