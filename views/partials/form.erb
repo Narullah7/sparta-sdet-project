@@ -1,0 +1,39 @@
+<form action="/<%= @planets.id %>" method="POST">
+  <div>
+    <label>Title</label>
+    <input type="text" name="title" placeholder="Enter a title" value="<%= @planets.title %>">
+  </div>
+  <br>
+  <div>
+    <label>Fact #1</label>
+    <textarea name="body" rows="4" cols="24" placeholder="Enter your first fact"><%= @planets.body %></textarea>
+  </div>
+  <br>
+  <div>
+    <label>Fact #3</label>
+    <textarea name="body2" rows="4" cols="24" placeholder="Enter your second fact"><%= @planets.body2 %></textarea>
+  </div>
+  <br>
+  <div>
+    <label>Fact #3</label>
+    <textarea name="body3" rows="4" cols="24" placeholder="Enter your third fact"><%= @planets.body3 %></textarea>
+  </div>
+  <br>
+  <div>
+    <label>First Image</label>
+    <input type="text" name="image" placeholder="Enter URL (300x300)" value="<%= @planets.image %>">
+  </div>
+  <br>
+  <div>
+    <label>Second Image</label>
+    <input type="text" name="image2" placeholder="Enter URL (300x300)" value="<%= @planets.image2 %>">
+  </div>
+  <br>
+  <div>
+    <input type="submit" value="Save Post">
+  </div>
+  <% if(@planets.id) %>
+    <input type="hidden" name="_method" value="PUT">
+  <% end %>
+
+</form>

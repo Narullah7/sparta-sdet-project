@@ -1,0 +1,37 @@
+<h1>Live asteroid data:  <%= @nasa_api['near_earth_objects'].keys[0] %> </h1>
+
+<!-- <div style="padding-left:100px; float:left;"> -->
+
+<% @nasa_api['near_earth_objects']['2018-01-03'].each do |nasa|  %>
+  <h3><a href="<%= nasa['nasa_jpl_url'] %>"><%= nasa['name'] %></a></h3>
+  <p>Neo reference id: <%= nasa['neo_reference_id'] %></p>
+  <p>Absolute magnitude: <%= nasa['absolute_magnitude_h'] %></p>
+  <p>Diameter of asteroid</p>
+  <ul>
+    <li>Kilometers</li>
+    <ul>
+      <li>Min: <%= nasa['estimated_diameter']['kilometers']['estimated_diameter_min'] %> km</li>
+      <li>Max: <%= nasa['estimated_diameter']['kilometers']['estimated_diameter_max'] %> km</li>
+    </ul>
+    <li>Meters</li>
+    <ul>
+      <li>Min: <%= nasa['estimated_diameter']['meters']['estimated_diameter_min'] %> m</li>
+      <li>Max: <%= nasa['estimated_diameter']['meters']['estimated_diameter_max'] %> m</li>
+    </ul>
+  </ul>
+  <p>Potentially hazardous asteriod: <span style="color:red;"><%= nasa['is_potentially_hazardous_asteroid'] %></span></p>
+  <p>Velocity(speed) of asteroid:</p>
+  <% nasa['close_approach_data'].each do |i| %>
+    <ul>
+      <li> <%= i['relative_velocity']['kilometers_per_hour'] %> km/h </li>
+      <li> <%= i['relative_velocity']['miles_per_hour'] %> mp/h </li>
+    </ul>
+    <p> Missing Distance:</p>
+    <ul>
+      <li> <%= i['miss_distance']['kilometers'] %> kilometers</li>
+      <li> <%= i['miss_distance']['miles'] %> Miles</li>
+    </ul>
+    <p>Orbiting: <%= i['orbiting_body'] %></p>
+  <% end %>
+<% end %>
+<!-- </div> -->
