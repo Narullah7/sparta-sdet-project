@@ -3,6 +3,21 @@ class Planet
   attr_accessor :id, :title, :body, :body2, :body3, :image, :image2
 
   # Save is an instance method that we can use to create or update a post
+
+  def self.get_newest_planet
+
+    conn = self.open_connection
+
+    sql = "SELECT * FROM planet WHERE id = (select MAX(id) FROM planet)"
+
+    results = conn.exec(sql)
+
+    result = self.hydrate(results[0])
+
+    result.id.to_i
+
+  end
+
   def save
 
     # Assign the Postgre connect to variable

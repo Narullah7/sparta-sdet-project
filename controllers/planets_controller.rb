@@ -1,6 +1,9 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 
 class PlanetsController < Sinatra::Base
+  enable :sessions
+  register Sinatra::Flash
 
   # Sets root as the parent-directory of the current file
   set :root, File.join(File.dirname(__FILE__), '..')
@@ -11,11 +14,13 @@ class PlanetsController < Sinatra::Base
 
   get '/' do
     @nasa_api = JSON.parse(HTTParty.get("https://api.nasa.gov/neo/rest/v1/feed?end_date=2018-01-06&detailed=true&api_key=Ltm5fFmZcRXQf65mldfwWTEtmkU0fsKcUf6OY2oh").body)
+
     erb :'planets/NasaApi'
   end
 
   get '/planets' do
     @planets = Planet.all
+
     erb :'planets/index'
   end
 
@@ -55,6 +60,8 @@ class PlanetsController < Sinatra::Base
     # Save is a instance method that we can use to save the new Post into the db
     post.save
 
+    flash[:notice] = "You have successfully added a new planet"
+
     # After the save we request the / route and display all the posts
     redirect "/planets"
   end
@@ -81,6 +88,8 @@ class PlanetsController < Sinatra::Base
     # Use the instance method save to update the post
     post.save
 
+    flash[:notice] = "You have successfully updated a planet"
+
     # Redirect to / to show all the posts
     redirect '/'
 
@@ -106,6 +115,8 @@ class PlanetsController < Sinatra::Base
     # Use the instance method save to update the post
     post.save
 
+    flash[:notice] = "You have successfully updated a planet"
+
     # Redirect to / to show all the posts
     redirect '/planets'
 
@@ -118,6 +129,8 @@ class PlanetsController < Sinatra::Base
 
     # We can use the Class method destroy to remove the post from the db
     Planet.destroy(id)
+
+    flash[:notice] = "You have successfully deleted a planet"
 
     # Redirect to / to show all the posts
     redirect "/planets"
