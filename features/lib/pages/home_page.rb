@@ -20,8 +20,18 @@ class PlanetHomePage
   end
 
   def click_planets_new_link
-      planets_new_link.click
+    planets_new_link.click
   end
 
+  def existing_planet
+    find("a", :text => "Pluto")
+  end
 
+  def click_existing_planet
+    existing_planet.click
+  end
+
+  def edit_button
+    click_button("Edit")
+  end
 end

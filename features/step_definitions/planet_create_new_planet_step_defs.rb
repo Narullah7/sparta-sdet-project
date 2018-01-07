@@ -7,7 +7,7 @@ Given("I go to the planets new page") do
 end
 
 Given("I input title details") do
-  create_new_planet_page.enter_title("Fahim bullah")
+  create_new_planet_page.enter_title("Test 1")
 end
 
 Given("I input fact input number one") do
