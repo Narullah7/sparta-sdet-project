@@ -1,10 +1,11 @@
 require 'sinatra'
 require 'httparty'
 require 'json'
+require 'rspec'
 require 'sinatra/reloader' if development?
 require 'pg'
-require_relative './models/planet.rb'
-require_relative './controllers/planets_controller.rb'
+require_relative './models/planet'
+require_relative './controllers/planets_controller'
 
 use Rack::MethodOverride
 

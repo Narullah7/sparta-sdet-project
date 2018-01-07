@@ -1,3 +1,5 @@
+require 'sinatra/base'
+
 class PlanetsController < Sinatra::Base
 
   # Sets root as the parent-directory of the current file
@@ -6,18 +8,13 @@ class PlanetsController < Sinatra::Base
   # Sets the view directory correctly
   set :views, Proc.new { File.join(root, "views") }
 
-  # Enables the reloader so we dont need to keep restarting the server
-  configure :development do
-      register Sinatra::Reloader
-  end
 
   get '/' do
-    @nasa_api = JSON.parse(HTTParty.get("https://api.nasa.gov/neo/rest/v1/feed?end_date=2018-01-03&detailed=true&api_key=Ltm5fFmZcRXQf65mldfwWTEtmkU0fsKcUf6OY2oh").body)
+    @nasa_api = JSON.parse(HTTParty.get("https://api.nasa.gov/neo/rest/v1/feed?end_date=2018-01-06&detailed=true&api_key=Ltm5fFmZcRXQf65mldfwWTEtmkU0fsKcUf6OY2oh").body)
     erb :'planets/NasaApi'
   end
 
   get '/planets' do
-    # @InstanceVariable = "working"
     @planets = Planet.all
     erb :'planets/index'
   end
