@@ -1,6 +1,6 @@
 <h1>Live asteroid data:  <%= @nasa_api['near_earth_objects'].keys[0] %> </h1>
 
-<!-- <div style="padding-left:100px; float:left;"> -->
+<div style="padding-left:50px;">
 
 <% @nasa_api['near_earth_objects']['2018-01-07'].each do |nasa|  %>
   <h3><a id="link-to" href="<%= nasa['nasa_jpl_url'] %>"><%= nasa['name'] %></a></h3>
@@ -34,4 +34,4 @@
     <p>Orbiting: <%= i['orbiting_body'] %></p>
   <% end %>
 <% end %>
-<!-- </div> -->
+</div>

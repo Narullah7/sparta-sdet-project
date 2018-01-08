@@ -1,7 +1,7 @@
-<h1>Planets</h1>
+<h1 style="padding-left: 20px;">Planets</h1>
 
 <% @planets.each do |post| %>
-<div style="float: left; padding-right: 6px;">
+<div style="float: left; padding-right: 6px; padding-left: 20px;">
   <h3><a href="/<%= post.id %>"><%= post.title %></a></h3>
   <img src="<%= post.image %>" alt="No">
 </div>
