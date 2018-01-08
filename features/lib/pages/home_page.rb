@@ -34,4 +34,29 @@ class PlanetHomePage
   def edit_button
     click_button("Edit")
   end
+
+  def test_for_delete
+    find("a", :text => "Sun")
+  end
+
+  def click_test_for_delete
+    test_for_delete.click
+  end
+
+  def delete_button
+    first('input[type="submit"]')
+  end
+
+  def click_delete_button
+    delete_button.click
+  end
+
+  def asteroid_link
+    find("#link-to", match: :first)
+  end
+
+  def click_asteroid_link
+    asteroid_link.click
+  end
+
 end

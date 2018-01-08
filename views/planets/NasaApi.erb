@@ -2,8 +2,8 @@
 
 <!-- <div style="padding-left:100px; float:left;"> -->
 
-<% @nasa_api['near_earth_objects']['2018-01-06'].each do |nasa|  %>
-  <h3><a href="<%= nasa['nasa_jpl_url'] %>"><%= nasa['name'] %></a></h3>
+<% @nasa_api['near_earth_objects']['2018-01-07'].each do |nasa|  %>
+  <h3><a id="link-to" href="<%= nasa['nasa_jpl_url'] %>"><%= nasa['name'] %></a></h3>
   <p>Neo reference id: <%= nasa['neo_reference_id'] %></p>
   <p>Absolute magnitude: <%= nasa['absolute_magnitude_h'] %></p>
   <p>Diameter of asteroid</p>

@@ -13,7 +13,7 @@ class PlanetsController < Sinatra::Base
 
 
   get '/' do
-    @nasa_api = JSON.parse(HTTParty.get("https://api.nasa.gov/neo/rest/v1/feed?end_date=2018-01-06&detailed=true&api_key=Ltm5fFmZcRXQf65mldfwWTEtmkU0fsKcUf6OY2oh").body)
+    @nasa_api = JSON.parse(HTTParty.get("https://api.nasa.gov/neo/rest/v1/feed?end_date=2018-01-08&detailed=true&api_key=Ltm5fFmZcRXQf65mldfwWTEtmkU0fsKcUf6OY2oh").body)
 
     erb :'planets/NasaApi'
   end
