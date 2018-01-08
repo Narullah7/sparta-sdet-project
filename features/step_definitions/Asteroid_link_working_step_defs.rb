@@ -7,5 +7,5 @@ When("I click on the asteroid link") do
 end
 
 Then("I should be taken to the correct website") do
-  expect(current_url).to eq("https://ssd.jpl.nasa.gov/sbdb.cgi?sstr=3795031")
+  expect(current_url).to eq("https://ssd.jpl.nasa.gov/sbdb.cgi?sstr=2265196")
 end
