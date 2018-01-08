@@ -24,7 +24,7 @@ bundle install
 
 ```
 
-To seed the database, you will need to have PostgreSQL installed, and to create a database in PostgreSQL
+To seed the database, you will need to create a database in PostgreSQL
 ```
 psql
 ```
