@@ -63,7 +63,7 @@ describe 'Unit testing Sinatra app' do
   end
 
 
-  it 'should load a planet when the user clicks on it' do
+  it 'should return a status code of 200 when a user clicks on a planet' do
     get "/1"
     expect(last_response.status).to eq(200)
   end
