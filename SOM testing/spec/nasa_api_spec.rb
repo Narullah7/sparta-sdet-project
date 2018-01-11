@@ -10,7 +10,6 @@ describe 'Testing the SOM' do
   end
 
   it 'Api should return in hash form' do
-    # puts @test_api
     expect(@test_api).to be_kind_of(Hash)
   end
 
